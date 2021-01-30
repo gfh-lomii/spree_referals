@@ -1,5 +1,20 @@
-# Sample localization file for English. Add more files in this directory for other locales.
-# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
-
 en:
-  hello: "Hello world"
+  activerecord:
+    models:
+      spree/referal:
+        one: referal
+        other: referals
+    attributes:
+      spree/referal:
+        first_name: First Name
+        last_name: Last name
+        email: Email
+        code: Code
+        active: Active
+        created_at: created at
+  spree:
+    back_to_referals_list: Back to referals
+    edit_referal: Edit referal
+    new_referal: New referal
+    referal: referal
+    referal_name: Referal name

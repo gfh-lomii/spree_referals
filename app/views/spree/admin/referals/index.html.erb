@@ -1,0 +1,82 @@
+<% content_for :page_title do %>
+  <%= Spree.t(plural_resource_name(Spree::Referal)) %>
+<% end %>
+
+<% content_for :page_actions do %>
+  <%= button_link_to Spree.t(:new_referal), new_object_url, { class: "btn-success", icon: 'add', id: 'admin_new_referal' } %>
+<% end if can?(:create, Spree::Referal) %>
+
+<% content_for :table_filter do %>
+  <div data-hook="admin_referals_index_search">
+    <%= search_form_for [:admin, @search] do |f| %>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+<!--             <%#= label_tag :q_first_name_cont, Spree.t(:first_name) %>
+            <%#= f.text_field :first_name_cont, tabindex: 1, class: "form-control js-quick-search-target" %> -->
+          </div>
+        </div>
+      </div>
+      <div data-hook="admin_referals_index_search_buttons" class="form-actions">
+        <%= button Spree.t(:filter_results), 'search' %>
+      </div>
+    <% end %>
+  </div>
+<% end %>
+
+<%= render partial: 'spree/admin/shared/index_table_options', locals: { collection: @collection } %>
+
+<% if @referals.any? %>
+  <table class="table sortable" data-hook="referals_table">
+    <thead>
+      <tr data-hook="referals_header">
+        <th>
+          <%= sort_link @search, :first_name, I18n.t(:first_name, scope: 'activerecord.attributes.spree/referal') %>
+        </th>
+        <th>
+          <%= sort_link @search, :last_name, I18n.t(:last_name, scope: 'activerecord.attributes.spree/referal') %>
+        </th>
+        <th>
+          <%= sort_link @search, :email, I18n.t(:email, scope: 'activerecord.attributes.spree/referal') %>
+        </th>
+        <th>
+          <%= sort_link @search, :active, I18n.t(:active, scope: 'activerecord.attributes.spree/referal') %>
+        </th>
+        <th>
+          <%= sort_link @search, :created_at, I18n.t(:created_at, scope: 'activerecord.attributes.spree/referal') %>
+        </th>
+        <th class="actions"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @referals.each do |referal| %>
+        <tr id="<%= spree_dom_id referal %>" data-hook="referals_row">
+          <td>
+            <%= referal.first_name %>
+          </td>
+          <td>
+            <%= referal.last_name %>
+          </td>
+           <td>
+            <%= referal.email %>
+          </td>
+          <td>
+            <%= referal.active? ? 'si' : 'no' %>
+          </td>
+          <td>
+            <%= pretty_time(referal.created_at) %>
+          </td>
+          <td class="actions actions-2 text-right">
+            <%= link_to_edit referal, no_text: true, class: 'edit' %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <div class="alert alert-info alpha twelve columns no-objects-found">
+    <%= Spree.t(:no_resource_found, resource: plural_resource_name(Spree::Referal)) %>
+  </div>
+<% end %>
+
+<%= render partial: 'spree/admin/shared/index_table_options', locals: { collection: @collection } %>

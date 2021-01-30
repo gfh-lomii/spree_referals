@@ -1,0 +1,20 @@
+es:
+  activerecord:
+    models:
+      spree/referal:
+        one: Referido
+        other: Referidos
+    attributes:
+      spree/referal:
+        first_name: Nombre
+        last_name: Apellido
+        email: Correo electrónico
+        code: Código
+        active: Activo
+        created_at: creado en
+  spree:
+    back_to_referals_list: Volver a la lista de referidos
+    edit_referal: Editar referido
+    new_referal: Nuevo referido
+    referal: referido
+    referal_name: Nombre del referido
