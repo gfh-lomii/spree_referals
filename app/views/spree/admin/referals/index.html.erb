@@ -31,6 +31,9 @@
     <thead>
       <tr data-hook="referals_header">
         <th>
+          <%= sort_link @search, :code, I18n.t(:code, scope: 'activerecord.attributes.spree/referal') %>
+        </th>
+        <th>
           <%= sort_link @search, :first_name, I18n.t(:first_name, scope: 'activerecord.attributes.spree/referal') %>
         </th>
         <th>
@@ -51,6 +54,9 @@
     <tbody>
       <% @referals.each do |referal| %>
         <tr id="<%= spree_dom_id referal %>" data-hook="referals_row">
+          <td>
+            <%= referal.code %>
+          </td>
           <td>
             <%= referal.first_name %>
           </td>
