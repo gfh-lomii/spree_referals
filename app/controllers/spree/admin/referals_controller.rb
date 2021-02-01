@@ -10,7 +10,7 @@
 
       def collection
         params[:q] = {} if params[:q].blank?
-        referals = super
+        referals = Spree::Referal.all
         @search = referals.ransack(params[:q])
         @collection = @search.result.
             page(params[:page]).

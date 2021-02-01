@@ -12,8 +12,8 @@
       <div class="row">
         <div class="col-md-6">
           <div class="form-group">
-<!--             <%#= label_tag :q_first_name_cont, Spree.t(:first_name) %>
-            <%#= f.text_field :first_name_cont, tabindex: 1, class: "form-control js-quick-search-target" %> -->
+            <%= label_tag :q_code_or_first_name_or_last_name_or_email_cont, Spree.t(:referal) %>
+            <%= f.text_field :code_or_first_name_or_last_name_or_email_cont, tabindex: 1, class: "form-control js-quick-search-target" %>
           </div>
         </div>
       </div>
@@ -46,6 +46,9 @@
           <%= sort_link @search, :active, I18n.t(:active, scope: 'activerecord.attributes.spree/referal') %>
         </th>
         <th>
+          Ventas
+        </th>
+        <th>
           <%= sort_link @search, :created_at, I18n.t(:created_at, scope: 'activerecord.attributes.spree/referal') %>
         </th>
         <th class="actions"></th>
@@ -68,6 +71,9 @@
           </td>
           <td>
             <%= referal.active? ? 'si' : 'no' %>
+          </td>
+          <td>
+            <%= Spree::Order.where(spree_referal_id: referal.id).complete.count %> / <%= Spree::Order.where(spree_referal_id: referal.id).incomplete.count %>
           </td>
           <td>
             <%= pretty_time(referal.created_at) %>

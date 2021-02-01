@@ -3,7 +3,8 @@ module Spree
     belongs_to :cart
 
     validates :code, :first_name, :last_name, :email, presence: true
-
+    self.whitelisted_ransackable_attributes = %w[code first_name last_name email]
+    
     def full_name
       first_name + ' ' + last_name
     end
