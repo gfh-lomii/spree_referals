@@ -1,4 +1,4 @@
-module SpreeReferals::Spree
+module Spree
   module StoreControllerDecorator
     def self.prepended(base)
       base.before_action :check_referal
@@ -21,4 +21,4 @@ module SpreeReferals::Spree
   end
 end
 
-::Spree::StoreController.prepend SpreeReferals::Spree::StoreControllerDecorator
+::Spree::StoreController.prepend Spree::StoreControllerDecorator
