@@ -18,3 +18,9 @@ es:
     new_referal: Nuevo referido
     referal: referido
     referal_name: Nombre del referido
+    referal_purchase_mailer:
+      notification:
+        heading: Notificación de compra - Programa de referidos
+        instructions: Uno de tus referidos acaba de terminar una compra
+        order_summary: Orden %{number}
+        subject: '[Referidos] Notificación de compra'

@@ -18,3 +18,9 @@ en:
     new_referal: New referal
     referal: referal
     referal_name: Referal name
+    referal_purchase_mailer:
+      notification: 
+        heading: Purchase notification - Referals Program
+        instructions: One of your referal orders has been completed
+        order_summary: Order %{number}
+        subject: '[Referals] Purchase notification'

@@ -1,0 +1,12 @@
+<%= Spree.t('referal_purchase_mailer.notification.heading') %>
+
+<%= Spree.t('referal_purchase_mailer.notification.instructions') %>
+
+============================================================
+#<%= @order.number %>
+============================================================
+<%= @order.email %>
+
+
+total: <%= number_to_currency(@order.total, unit: '$', format: "%u%n") %>
+============================================================
