@@ -73,7 +73,7 @@
             <%= referal.active? ? 'si' : 'no' %>
           </td>
           <td>
-            <%= Spree::Order.where(spree_referal_id: referal.id).complete.count %> / <%= Spree::Order.where(spree_referal_id: referal.id).incomplete.count %>
+            <%= Spree::Order.where(spree_referal_id: referal.id).complete.count %> / <%= Spree::Order.where(spree_referal_id: referal.id).count %>
           </td>
           <td>
             <%= pretty_time(referal.created_at) %>
