@@ -1,5 +1,6 @@
 module Spree
   class Referal < Spree::Base
+    acts_as_paranoid
     belongs_to :order
 
     validates :code, :first_name, :last_name, :email, presence: true
